@@ -41,6 +41,7 @@ import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   descriptions: { order: 1, attributeName: 'cbc:Description', min: 0, max: undefined, classRef: UdtText },
+  descriptionTest: { order: 1, attributeName: 'cbc:DescriptionTest', min: 0, max: undefined, classRef: UdtText },
   packQuantity: { order: 2, attributeName: 'cbc:PackQuantity', min: 0, max: 1, classRef: UdtQuantity },
   packSizeNumeric: { order: 3, attributeName: 'cbc:PackSizeNumeric', min: 0, max: 1, classRef: UdtNumeric },
   catalogueIndicator: { order: 4, attributeName: 'cbc:CatalogueIndicator', min: 0, max: 1, classRef: UdtIndicator },
@@ -82,6 +83,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 // ##################################  TODO CAC MISSING ################################################
 type AllowedParams = {
   descriptions?: string[] | UdtText[];
+  descriptionTest?: string[] | UdtText[];
   packQuantity?: string | UdtQuantity;
   packSizeNumeric?: string | UdtNumeric;
   catalogueIndicator?: string | UdtIndicator;

@@ -46,6 +46,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   cityName: { order: 3, attributeName: 'cbc:CityName', min: 0, max: 1, classRef: UdtText },
   postalZone: { order: 4, attributeName: 'cbc:PostalZone', min: 0, max: 1, classRef: UdtText },
   countrySubentity: { order: 5, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
+  CountrySubentityCode: { order: 5, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtText },
   addressLine: { order: 6, attributeName: 'cac:AddressLine', min: 0, max: 1, classRef: UdtText },
   country: { order: 7, attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
 };
@@ -61,6 +62,7 @@ type AllowedParams = {
   postalZone: string | UdtText;
   /* Seller country subdivision. The subdivision of a country. Example value: Region A */
   countrySubentity?: string | UdtText;
+  CountrySubentityCode?: string | UdtText;
   /* ADDRESS LINE */
   addressLine?: string | UdtText;
   /* COUNTRY */

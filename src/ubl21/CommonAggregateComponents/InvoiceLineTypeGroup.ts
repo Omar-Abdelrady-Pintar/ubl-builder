@@ -117,7 +117,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
-  itemPriceExtension: {order: 28,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount }
+  itemPriceExtension: {order: 28,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount },
+  uuid12: { order: 29, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
+
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
 };
 
@@ -150,6 +152,8 @@ type AllowedParams = {
   deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
   itemPriceExtension: string | UdtAmount;
+  uuid2?: string | UdtIdentifier;
+  
 };
 
 /**

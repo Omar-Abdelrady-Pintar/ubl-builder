@@ -118,7 +118,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
   itemPriceExtension: {order: 28,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount },
-  uuid12: { order: 29, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
+  uuid2: { order: 29, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
 
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
 };

@@ -15,6 +15,7 @@ import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
 import { Item } from './ItemTypeGroup';
 import { Price } from './PriceTypeGroup';
 import { DeliveryTerms } from './DeliveryTerms';
+import {  ItemPriceExtension } from './ItemPriceExtensionTypeGroup';
 
 /*
   1    cbc:ID [1..1]    An identifier for this invoice line.
@@ -117,8 +118,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
-  itemPriceExtension: {order: 28,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount },
-  uuid2: { order: 29, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
+  itemPriceExtension: {order: 28,attributeName: 'cac:ItemPriceExtension', min: 1, max: 1, classRef: ItemPriceExtension },
+  uuid2: { order: 29, attributeName: 'cbc:UUID2', min: 0, max: 1, classRef: UdtIdentifier },
 
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
 };
@@ -151,7 +152,7 @@ type AllowedParams = {
   price: Price; // Mandatory
   deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
-  itemPriceExtension: string | UdtAmount;
+  itemPriceExtension: ItemPriceExtension;
   uuid2?: string | UdtIdentifier;
   
 };
@@ -200,14 +201,14 @@ class InvoiceLine extends GenericAggregateComponent {
     this.attributes.lineExtensionAmount = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
   }
 
-  getItemPriceExtension(rawValue = true) {
-    return rawValue ? this.attributes.itemPriceExtension.content : this.attributes.itemPriceExtension;
-  }
+  // getItemPriceExtension(rawValue = true) {
+  //   return rawValue ? this.attributes.itemPriceExtension.content : this.attributes.itemPriceExtension;
+  // }
 
-  setItemPriceExtension(value: string | UdtAmount, currencyID = 'COP') {
-    if (!value) throw new Error('value is required');
-    this.attributes.itemPriceExtension = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
-  }
+  // setItemPriceExtension(value: string | UdtAmount, currencyID = 'COP') {
+  //   if (!value) throw new Error('value is required');
+  //   this.attributes.itemPriceExtension = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
+  // }
 
   /**
    * @returns { Price } Price object

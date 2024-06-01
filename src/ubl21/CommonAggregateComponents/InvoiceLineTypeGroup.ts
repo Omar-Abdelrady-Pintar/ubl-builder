@@ -53,7 +53,6 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   uuid: { order: 2, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
   notes: { order: 3, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
   invoicedQuantity: { order: 4, attributeName: 'cbc:InvoicedQuantity', min: 0, max: 1, classRef: UdtQuantity },
-  invoicedQuantity1: { order: 4, attributeName: 'cbc:InvoicedQuantity', min: 0, max: 1, classRef: UdtQuantity },
   lineExtensionAmount: { order: 5, attributeName: 'cbc:LineExtensionAmount', min: 1, max: 1, classRef: UdtAmount },
   taxPointDate: { order: 6, attributeName: 'cbc:TaxPointDate', min: 0, max: 1, classRef: UdtDate },
   accountingCostCode: { order: 7, attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: UdtCode },
@@ -118,7 +117,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
-  itemPriceExtension: {order: 27,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount }
+  itemPriceExtension: {order: 28,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount }
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
 };
 
@@ -127,7 +126,6 @@ type AllowedParams = {
   uuid?: string | UdtIdentifier;
   notes?: string[] | UdtText[];
   invoicedQuantity: string | UdtQuantity; // Mandatory
-  invoicedQuantity1: string | UdtQuantity; // Mandatory
   lineExtensionAmount: string | UdtAmount; // Mandatory
   taxPointDate?: string | UdtDate;
   accountingCostCode?: string | UdtCode;

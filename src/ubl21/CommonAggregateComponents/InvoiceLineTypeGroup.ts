@@ -117,6 +117,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
+  itemPriceExtension: {order: 27,attributeName: 'cac:DeliveryTerms', min: 1, max: 1, classRef: UdtAmount }
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
 };
 
@@ -148,6 +149,7 @@ type AllowedParams = {
   price: Price; // Mandatory
   deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
+  itemPriceExtension: string | UdtAmount;
 };
 
 /**
@@ -192,6 +194,15 @@ class InvoiceLine extends GenericAggregateComponent {
   setLineExtensionAmount(value: string | UdtAmount, currencyID = 'COP') {
     if (!value) throw new Error('value is required');
     this.attributes.lineExtensionAmount = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
+  }
+
+  getItemPriceExtension(rawValue = true) {
+    return rawValue ? this.attributes.itemPriceExtension.content : this.attributes.itemPriceExtension;
+  }
+
+  setItemPriceExtension(value: string | UdtAmount, currencyID = 'COP') {
+    if (!value) throw new Error('value is required');
+    this.attributes.itemPriceExtension = value instanceof UdtAmount ? value : new UdtAmount(value, { currencyID });
   }
 
   /**

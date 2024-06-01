@@ -124,6 +124,7 @@ import { Item, ItemTypeParams, SupplyItem } from './ItemTypeGroup';
 import { AllowanceCharge, AllowanceChargeParams } from './AllowanceChargeTypeGroup';
 
 import { Price, PriceParams } from './PriceTypeGroup';
+import { ItemPriceExtension } from './ItemPriceExtensionTypeGroup';
 import { InvoiceLine, InvoiceLineParams } from './InvoiceLineTypeGroup';
 import { CreditNoteLine, SubCreditNoteLine, CreditNoteLineParams } from './CreditNoteLineTypeGroup';
 import { DebitNoteLine, DebitNoteLineParams } from './DebitNoteLineTypeGroup';
@@ -265,6 +266,7 @@ export {
   AllowanceCharge,
   AllowanceChargeParams,
   Price,
+  ItemPriceExtension,
   PriceParams,
   InvoiceLine,
   InvoiceLineParams,

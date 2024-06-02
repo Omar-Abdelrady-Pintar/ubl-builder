@@ -1,8 +1,7 @@
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtCode, UdtName, UdtPercent } from '../types/UnqualifiedDataTypes';
-import { TaxScheme } from './TaxScheme';
+import {  UdtName} from '../types/UnqualifiedDataTypes';
 
 
 /*
@@ -38,26 +37,12 @@ class CommodityClassificationType extends GenericAggregateComponent {
     super(content, ParamsMap, 'cac:CommodityClassification');
   }
 
-  setPercent(value: string | UdtPercent) {
-    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
-  }
 
-  /**
-   * @returns { string | UdtPercent }
-   */
-  getPercent(rawValue = true) {
-    return rawValue ? this.attributes.percent.content : this.attributes.percent;
-  }
-
-  getTaxScheme(): TaxScheme {
-    return this.attributes.taxScheme;
-  }
 }
 
 export {
-  AllowedParams as TaxCategoryTypeParams,
+  AllowedParams as CommodityClassificationTypeParams,
   CommodityClassificationType as CommodityClassification,
-  AllowedParams as ClassifiedTaxCategoryTypeParams,
-  ParamsMap as TaxCategoryTypeParamsMap,
+  ParamsMap as  CommodityClassificationTypeParamsMap,
 
 };

@@ -20,12 +20,12 @@ import {  UdtName} from '../types/UnqualifiedDataTypes';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+  itemClassificationCode: { order: 2, attributeName: 'cbc:ItemClassificationCode', min: 0, max: 1, classRef: UdtName },
 
 };
 
 type AllowedParams = {
-  name?: string | UdtName;
+  itemClassificationCode?: string | UdtName;
 };
 
 /**

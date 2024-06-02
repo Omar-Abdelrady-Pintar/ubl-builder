@@ -2,23 +2,23 @@ import { XsdNormalizedString } from '../xsd';
 
 export type AllowedAttributes = {
   /** The identification of a list of codes */
-  listID: string;
+  listID?: string;
   /** An agency that maintains one or more lists of codes */
-  listAgencyID: string;
+  listAgencyID?: string;
   /** The name of the agency that maintains the list of codes */
-  listAgencyName: string;
+  listAgencyName?: string;
   /** The name of a list of codes */
-  listName: string;
+  listName?: string;
   /** The version of the list of codes */
-  listVersionID: string;
+  listVersionID?: string;
   /***The textual equivalent of the code content component */
-  name: string;
+  name?: string;
   /** The identifier of the language used in the code name */
-  languageID: string;
+  languageID?: string;
   /**  The Uniform Resource Identifier that identifies where the code list is located */
-  listURI: string;
+  listURI?: string;
   /**  The Uniform Resource Identifier that identifies where the code list scheme is located */
-  listSchemeURI: string;
+  listSchemeURI?: string;
 };
 
 /**

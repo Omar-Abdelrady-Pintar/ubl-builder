@@ -3,6 +3,7 @@ import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../t
 import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
 import { SellersItemIdentification } from './SellersItemIdentification';
 import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
+import { CommodityClassification } from './CommodityClassificationTypeGroup';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.
@@ -76,6 +77,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     min: 0,
     max: undefined,
     classRef: ClassifiedTaxCategory,
+  },
+  CommodityClassification: {
+    order: 20,
+    attributeName: 'cac:CommodityClassification',
+    min: 0,
+    max: undefined,
+    classRef: CommodityClassification,
   },
   // ItemIdentificationType
 };

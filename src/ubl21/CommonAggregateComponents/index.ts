@@ -52,6 +52,7 @@ import {
 
 import { AddressLine, AddressLineParams } from './AddressLine';
 import { Country, CountryParams } from './CountryTypeGroup';
+import {CommodityClassification} from './CommodityClassificationTypeGroup'
 
 import {
   PhysicalLocation,
@@ -275,4 +276,5 @@ export {
   CreditNoteLineParams,
   DebitNoteLine,
   DebitNoteLineParams,
+  CommodityClassification,
 };

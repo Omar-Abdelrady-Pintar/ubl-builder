@@ -1,28 +1,45 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+// 'use strict'
 
-/* TODO GENERIC CLASSES */
-import { UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtCode } from '../types/UnqualifiedDataTypes';
+
+
+/*
+
+  1  cbc:ID [0..1]    An identifier for this tax category.
+  2  cbc:Name [0..1]    The name of this tax category.
+  3  cbc:Percent [0..1]    The tax rate for this category, expressed as a percentage.
+  4  cbc:BaseUnitMeasure [0..1]    A Unit of Measures used as the basic for the tax calculation applied at a certain rate per unit.
+  5  cbc:PerUnitAmount [0..1]    Where a tax is applied at a certain rate per unit, the rate per unit applied.
+  6  cbc:TaxExemptionReasonCode [0..1]    The reason for tax being exempted, expressed as a code.
+  7  cbc:TaxExemptionReason [0..*]    The reason for tax being exempted, expressed as text.
+  8  cbc:TierRange [0..1]    Where a tax is tiered, the range of taxable amounts that determines the rate of tax applicable to this tax category.
+  9  cbc:TierRatePercent [0..1]    Where a tax is tiered, the tax rate that applies within the specified range of taxable amounts for this tax category.
+  10  cac:TaxScheme [1..1]    The taxation scheme within which this tax category is defined.
+
+*/
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  identificationCode: { order: 1, attributeName: 'cbc:ItemClassificationCode', min: 0, max: 1, classRef: UdtCode },
+  ItemClassificationCode: { order: 2, attributeName: 'cbc:ItemClassificationCode', min: 0, max: undefined,classRef: UdtCode },
+  
 };
 
 type AllowedParams = {
-  /** A code signifying this ItemClassificationCode. */
-  identificationCode?: string;
+  ItemClassificationCode?: string | UdtCode;
 };
 
 /**
- * A class to describe a ItemClassificationCode.
+ *
  */
+
 class CommodityClassificationType extends GenericAggregateComponent {
-  /**
-   * @param {AllowedParams} content
-   * @param {string} name
-   */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, 'cac:CommodityClassificationType');
+    super(content, ParamsMap, 'cac:CommodityClassification');
   }
 }
 
-export { CommodityClassificationType as  CommodityClassification, AllowedParams as CountryParams };
+export {
+  AllowedParams as TaxCategoryTypeParams,
+  CommodityClassificationType as CommodityClassification,
+
+};

@@ -83,7 +83,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:CommodityClassification',
     min: 0,
     max: undefined,
-    classRef: UdtName,
+    classRef: CommodityClassification,
   },
   // ItemIdentificationType
 };

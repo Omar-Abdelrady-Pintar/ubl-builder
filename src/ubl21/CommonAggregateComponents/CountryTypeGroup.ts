@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /* TODO GENERIC CLASSES */
-import { UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier, UdtName } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', min: 0, max: 1, classRef: UdtCode },
@@ -10,7 +10,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** A code signifying this country. */
-  identificationCode?: string;
+  identificationCode?: string | UdtCode;
   /** The name of this country */
   name?: string | UdtName;
 };

@@ -104,6 +104,7 @@ type AllowedParams = {
   modelName?: string | UdtName;
   sellersItemIdentification: SellersItemIdentification;
   classifiedTaxCategory: ClassifiedTaxCategory;
+  commodityClassification: CommodityClassification;
 };
 
 /**

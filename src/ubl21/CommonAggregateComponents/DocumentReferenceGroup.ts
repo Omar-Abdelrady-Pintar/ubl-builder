@@ -26,7 +26,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   documentStatusCode: { order: 12, attributeName: 'cbc:DocumentStatusCode', min: 0, max: 1, classRef: UdtCode },
   documentDescription: {
     order: 13,
-    attributeName: 'cbc:documentDescription',
+    attributeName: 'cbc:DocumentDescription',
     min: 0,
     max: undefined,
     classRef: UdtIdentifier,

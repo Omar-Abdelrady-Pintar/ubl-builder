@@ -83,7 +83,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:CommodityClassification',
     min: 0,
     max: undefined,
-    classRef: UdtName,
+    classRef: ClassifiedTaxCategory,
   },
   // ItemIdentificationType
 };
@@ -104,7 +104,7 @@ type AllowedParams = {
   modelName?: string | UdtName;
   sellersItemIdentification: SellersItemIdentification;
   classifiedTaxCategory: ClassifiedTaxCategory;
-  commodityClassification: UdtName;
+  commodityClassification: ClassifiedTaxCategory;
 };
 
 /**

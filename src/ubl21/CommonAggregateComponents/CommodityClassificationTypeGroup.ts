@@ -1,7 +1,8 @@
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtName, UdtPercent } from '../types/UnqualifiedDataTypes';
+import { TaxScheme } from './TaxScheme';
 
 
 /*
@@ -20,12 +21,12 @@ import { UdtCode } from '../types/UnqualifiedDataTypes';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  ItemClassificationCode: { order: 2, attributeName: 'cbc:ItemClassificationCode', min: 0, max: undefined,classRef: UdtCode },
-  
+  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+
 };
 
 type AllowedParams = {
-  ItemClassificationCode?: string | UdtCode;
+  name?: string | UdtName;
 };
 
 /**
@@ -36,10 +37,27 @@ class CommodityClassificationType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:CommodityClassification');
   }
+
+  setPercent(value: string | UdtPercent) {
+    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
+  }
+
+  /**
+   * @returns { string | UdtPercent }
+   */
+  getPercent(rawValue = true) {
+    return rawValue ? this.attributes.percent.content : this.attributes.percent;
+  }
+
+  getTaxScheme(): TaxScheme {
+    return this.attributes.taxScheme;
+  }
 }
 
 export {
   AllowedParams as TaxCategoryTypeParams,
   CommodityClassificationType as CommodityClassification,
+  AllowedParams as ClassifiedTaxCategoryTypeParams,
+  ParamsMap as TaxCategoryTypeParamsMap,
 
 };

@@ -53,7 +53,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /* Seller address line 1. The main address line in an address. Example value: Main Street 1 */
-  streetName: string | UdtText;
+  streetName?: string | UdtText;
   /* Seller address line 2. An additional address line in an address that can be used to give further details supplementing the main line. Example value: Po Box 351 */
   AdditionalStreetName?: string | UdtText;
   /* 	Seller city. The common name of the city, town or village, where the Seller address is located. Example value: London */
@@ -64,7 +64,7 @@ type AllowedParams = {
   countrySubentity?: string | UdtText;
   CountrySubentityCode?: string | UdtText;
   /* ADDRESS LINE */
-  addressLine?: string | UdtText;
+  addressLine?: string | UdtText | UdtIdentifier;
   /* COUNTRY */
   country?: Country;
 };

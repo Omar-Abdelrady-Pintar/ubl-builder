@@ -46,7 +46,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   registrationName: string | UdtName;
-  companyID: string | UdtIdentifier;
+  companyID?: string | UdtIdentifier;
   corporateRegistrationScheme?: CorporateRegistrationScheme;
 };
 

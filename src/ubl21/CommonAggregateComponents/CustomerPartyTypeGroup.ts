@@ -47,7 +47,7 @@ type AllowedParams = {
   customerAssignedAccountID?: string | UdtIdentifier;
   SupplierAssignedAccountID?: string | UdtIdentifier;
   additionalAccountIDs?: string[] | UdtIdentifier[];
-  party: Party;
+  party?: Party;
   deliveryContact?: DeliveryContact;
   accountingContact?: AccountingContact;
   buyerContact?: BuyerContact;

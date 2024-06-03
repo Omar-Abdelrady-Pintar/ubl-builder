@@ -14,7 +14,7 @@ export class UdtIdentifier extends CctIdentifierType {
    * @param {string} content
    * @param {UdtIdentifierAttributes} attributes
    */
-  constructor(content: string, attributes?: AllowedAttributes) {
+  constructor(content: string|any, attributes?: AllowedAttributes) {
     super(content, attributes);
   }
 }

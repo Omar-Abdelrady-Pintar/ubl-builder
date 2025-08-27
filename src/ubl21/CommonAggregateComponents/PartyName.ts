@@ -11,9 +11,9 @@ type AllowedParams = {
 };
 
 class PartyName extends GenericAggregateComponent {
-  constructor(content: AllowedParams) {
-    super(content, ParamsMap, 'cac:PartyName');
-  }
+  // constructor(content: AllowedParams) {
+  //   super(content, ParamsMap, 'cac:PartyName');
+  // }
 }
 
 export { PartyName, AllowedParams as PartyNameParams };

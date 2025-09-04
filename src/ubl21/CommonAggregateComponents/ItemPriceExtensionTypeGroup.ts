@@ -32,17 +32,17 @@ class ItemPriceExtension extends GenericAggregateComponent {
     super(content, ParamsMap, 'cac:ItemPriceExtension');
   }
 
-  setAmount(value: string | UdtAmount) {
-    this.attributes.amount = value instanceof UdtAmount ? value : new UdtAmount(value);
-  }
+  // setAmount(value: string | UdtAmount) {
+  //   this.attributes.amount = value instanceof UdtAmount ? value : new UdtAmount(value);
+  // }
 
-  /**
-   *
-   * @param {boolean} [rawValue=true]
-   */
-  getAmount(rawValue = true) {
-    return rawValue ? this.attributes.amount.content : this.attributes.amount;
-  }
+  // /**
+  //  *
+  //  * @param {boolean} [rawValue=true]
+  //  */
+  // getAmount(rawValue = true) {
+  //   return rawValue ? this.attributes.amount.content : this.attributes.amount;
+  // }
 
 }
 

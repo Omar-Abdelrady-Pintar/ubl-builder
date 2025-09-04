@@ -23,21 +23,21 @@ class AddressLine extends GenericAggregateComponent {
     super(content, ParamsMap, 'cac:AddressLine');
   }
 
-  // /**
-  //  *
-  //  * @param {boolean} raw as raw
-  //  */
-  // getLine(raw = false) {
-  //   return raw ? this.attributes.line.content : this.attributes.line;
-  // }
+  /**
+   *
+   * @param {boolean} raw as raw
+   */
+  getLine(raw = false) {
+    return raw ? this.attributes.line.content : this.attributes.line;
+  }
 
-  // /**
-  //  *
-  //  * @param {string | UdtText} value
-  //  */
-  // setLine(value: string | UdtText) {
-  //   this.attributes.line = value instanceof UdtText ? value : new UdtText(value);
-  // }
+  /**
+   *
+   * @param {string | UdtText} value
+   */
+  setLine(value: string | UdtText) {
+    this.attributes.line = value instanceof UdtText ? value : new UdtText(value);
+  }
 }
 
 export { AddressLine, AllowedParams as AddressLineParams };

@@ -825,12 +825,10 @@ export default class Invoice {
     this.children.taxExchangeRate = {
       parseToJson() {
         return {
-          'cac:TaxExchangeRate': {
-            'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
-            'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
-            'cbc:CalculationRate': value.CalculationRate,
-            ...(value.Date && { 'cbc:Date': value.Date }),
-          },
+          'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
+          'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
+          'cbc:CalculationRate': value.CalculationRate,
+          ...(value.Date && { 'cbc:Date': value.Date }),
         };
       },
     };

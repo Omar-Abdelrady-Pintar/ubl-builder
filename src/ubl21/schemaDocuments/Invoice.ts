@@ -820,16 +820,19 @@ export default class Invoice {
     SourceCurrencyCode: string;
     TargetCurrencyCode: string;
     CalculationRate: string;
+    Date?: string;
   }): Invoice {
     this.children.taxExchangeRate = {
-      SourceCurrencyCode: value.SourceCurrencyCode,
-      TargetCurrencyCode: value.TargetCurrencyCode,
-      CalculationRate: value.CalculationRate,
+      sourceCurrencyCode: new UdtCode(value.SourceCurrencyCode),
+      targetCurrencyCode: new UdtCode(value.TargetCurrencyCode),
+      calculationRate: new UdtNumeric(value.CalculationRate),
+      ...(value.Date && { date: new UdtDate(value.Date) }),
       parseToJson() {
         return {
-          'cbc:SourceCurrencyCode': this.SourceCurrencyCode,
-          'cbc:TargetCurrencyCode': this.TargetCurrencyCode,
-          'cbc:CalculationRate': this.CalculationRate,
+          'cbc:SourceCurrencyCode': this.sourceCurrencyCode.parseToJson(),
+          'cbc:TargetCurrencyCode': this.targetCurrencyCode.parseToJson(),
+          'cbc:CalculationRate': this.calculationRate.parseToJson(),
+          ...(this.date && { 'cbc:Date': this.date.parseToJson() }),
         };
       },
     };

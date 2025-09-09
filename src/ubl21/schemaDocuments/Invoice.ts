@@ -816,10 +816,11 @@ export default class Invoice {
    * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
    * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
    */
-  setTaxExchangeRate(value: { SourceCurrencyCode: string; TargetCurrencyCode: string; CalculationRate: string }): Invoice {
-    if (!value || typeof value.SourceCurrencyCode !== 'string' || typeof value.TargetCurrencyCode !== 'string' || typeof value.CalculationRate !== 'string') {
-      throw new Error('Invalid TaxExchangeRate value');
-    }
+  setTaxExchangeRate(value: {
+    SourceCurrencyCode: string;
+    TargetCurrencyCode: string;
+    CalculationRate: string;
+  }): Invoice {
     this.children.taxExchangeRate = {
       SourceCurrencyCode: value.SourceCurrencyCode,
       TargetCurrencyCode: value.TargetCurrencyCode,
@@ -830,7 +831,7 @@ export default class Invoice {
           'cbc:TargetCurrencyCode': this.TargetCurrencyCode,
           'cbc:CalculationRate': this.CalculationRate,
         };
-      }
+      },
     };
     return this;
   }

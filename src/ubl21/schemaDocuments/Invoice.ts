@@ -823,10 +823,16 @@ export default class Invoice {
     Date?: string;
   }): Invoice {
     this.children.taxExchangeRate = {
-      'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
-      'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
-      'cbc:CalculationRate': value.CalculationRate,
-      ...(value.Date && { 'cbc:Date': value.Date }),
+      parseToJson() {
+        return {
+          'cac:TaxExchangeRate': {
+            'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
+            'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
+            'cbc:CalculationRate': value.CalculationRate,
+            ...(value.Date && { 'cbc:Date': value.Date }),
+          },
+        };
+      },
     };
     return this;
   }

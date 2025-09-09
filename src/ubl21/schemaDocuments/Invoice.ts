@@ -90,6 +90,7 @@ import { SHA384 } from '../../tools/shas';
 import { addition, fixDecimals } from '../../tools/mathTools';
 import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
+import { TaxExchangeRate, TaxExchangeRateParams } from '../CommonAggregateComponents/TaxExchangeRate';
 
 type InvoiceOptions = {
   /** Issue time to create issues field like issuetime, issue date. Current Date by default . */
@@ -816,22 +817,8 @@ export default class Invoice {
    * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
    * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
    */
-  setTaxExchangeRate(value: {
-    SourceCurrencyCode: string;
-    TargetCurrencyCode: string;
-    CalculationRate: string;
-    Date?: string;
-  }): Invoice {
-    this.children.taxExchangeRate = {
-      parseToJson() {
-        return {
-          'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
-          'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
-          'cbc:CalculationRate': value.CalculationRate,
-          ...(value.Date && { 'cbc:Date': value.Date }),
-        };
-      },
-    };
+  setTaxExchangeRate(value: TaxExchangeRate | TaxExchangeRateParams): Invoice {
+    this.children.taxExchangeRate = value instanceof TaxExchangeRate ? value : new TaxExchangeRate(value);
     return this;
   }
 

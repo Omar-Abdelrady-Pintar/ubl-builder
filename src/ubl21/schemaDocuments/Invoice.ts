@@ -816,14 +816,6 @@ export default class Invoice {
    * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
    * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
    */
-  /**
-   * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
-   * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
-   */
-  /**
-   * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
-   * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
-   */
   setTaxExchangeRate(value: {
     SourceCurrencyCode: string;
     TargetCurrencyCode: string;
@@ -831,18 +823,10 @@ export default class Invoice {
     Date?: string;
   }): Invoice {
     this.children.taxExchangeRate = {
-      sourceCurrencyCode: new UdtCode(value.SourceCurrencyCode),
-      targetCurrencyCode: new UdtCode(value.TargetCurrencyCode),
-      calculationRate: new UdtNumeric(value.CalculationRate),
-      ...(value.Date && { date: new UdtDate(value.Date) }),
-      parseToJson() {
-        return {
-          'cbc:SourceCurrencyCode': this.sourceCurrencyCode.parseToJson(),
-          'cbc:TargetCurrencyCode': this.targetCurrencyCode.parseToJson(),
-          'cbc:CalculationRate': this.calculationRate.parseToJson(),
-          ...(this.date && { 'cbc:Date': this.date.parseToJson() }),
-        };
-      },
+      'cbc:SourceCurrencyCode': value.SourceCurrencyCode,
+      'cbc:TargetCurrencyCode': value.TargetCurrencyCode,
+      'cbc:CalculationRate': value.CalculationRate,
+      ...(value.Date && { 'cbc:Date': value.Date }),
     };
     return this;
   }

@@ -820,18 +820,21 @@ export default class Invoice {
    * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
    * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
    */
+  /**
+   * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
+   * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
+   */
   setTaxExchangeRate(value: {
     SourceCurrencyCode: string;
     TargetCurrencyCode: string;
     CalculationRate: string;
     Date?: string;
   }): Invoice {
-    // Create simple objects that mimic your Udt classes
     this.children.taxExchangeRate = {
-      sourceCurrencyCode: { content: value.SourceCurrencyCode, parseToJson: () => value.SourceCurrencyCode },
-      targetCurrencyCode: { content: value.TargetCurrencyCode, parseToJson: () => value.TargetCurrencyCode },
-      calculationRate: { content: value.CalculationRate, parseToJson: () => value.CalculationRate },
-      ...(value.Date && { date: { content: value.Date, parseToJson: () => value.Date } }),
+      sourceCurrencyCode: new UdtCode(value.SourceCurrencyCode),
+      targetCurrencyCode: new UdtCode(value.TargetCurrencyCode),
+      calculationRate: new UdtNumeric(value.CalculationRate),
+      ...(value.Date && { date: new UdtDate(value.Date) }),
       parseToJson() {
         return {
           'cbc:SourceCurrencyCode': this.sourceCurrencyCode.parseToJson(),

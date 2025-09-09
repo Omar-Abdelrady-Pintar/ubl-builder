@@ -813,11 +813,26 @@ export default class Invoice {
   }
 
   /**
-   * 47 A discount or charge that applies to a price component..
-   * @param value
+   * 47. Sets the tax exchange rate for currency conversion (MYR e-Invoice spec).
+   * @param value Object with string properties: SourceCurrencyCode, TargetCurrencyCode, CalculationRate
    */
-  setTaxExchangeRate(value: any) {
-    throw new Error('not implemented');
+  setTaxExchangeRate(value: { SourceCurrencyCode: string; TargetCurrencyCode: string; CalculationRate: string }): Invoice {
+    if (!value || typeof value.SourceCurrencyCode !== 'string' || typeof value.TargetCurrencyCode !== 'string' || typeof value.CalculationRate !== 'string') {
+      throw new Error('Invalid TaxExchangeRate value');
+    }
+    this.children.taxExchangeRate = {
+      SourceCurrencyCode: value.SourceCurrencyCode,
+      TargetCurrencyCode: value.TargetCurrencyCode,
+      CalculationRate: value.CalculationRate,
+      parseToJson() {
+        return {
+          'cbc:SourceCurrencyCode': this.SourceCurrencyCode,
+          'cbc:TargetCurrencyCode': this.TargetCurrencyCode,
+          'cbc:CalculationRate': this.CalculationRate,
+        };
+      }
+    };
+    return this;
   }
 
   /**
